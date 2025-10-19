@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: "#FF6B35";
+  --color-secondary: "#2D7D2E";
+  --color-primary-dark: "#E55A2B";
+  --color-secondary-dark: "#236624";
+}
+
+:root {
+  --color-primary: #ff6b35;
+  --color-secondary: #2d7d2e;
+  --color-primary-dark: #e55a2b;
+  --color-secondary-dark: #236624;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #f9fafb;
+}
+
+html {
+  scroll-behavior: smooth;
+}

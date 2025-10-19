@@ -5,6 +5,7 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import ProductListing from "./pages/ProductListing";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
+      <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
     </Router>
   );
 }

@@ -14,7 +14,7 @@ export async function shopifyFetch(query, variables = {}) {
   });
 
   const data = await res.json();
-  console.log("Shopify response data:", data);
+  // console.log("Shopify response data:", data);
   if (data.errors) {
     console.error("Shopify errors:", data.errors);
     throw new Error("Shopify API returned errors. See console.");

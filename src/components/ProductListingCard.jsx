@@ -5,7 +5,7 @@ import ProductCardSkeleton from "./SkeletonLoaders/ProductCardSkeleton";
 
 export default function ProductListingCard({ product, loading }) {
   if (loading || !product) return <ProductCardSkeleton />;
-  console.log("product:", product);
+  // console.log("product:", product);
 
   const image = product.images?.edges?.[0]?.node?.url || "/placeholder.png";
   const price = product.variants?.edges?.[0]?.node?.price?.amount || "0.00";

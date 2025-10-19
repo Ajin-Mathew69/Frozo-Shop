@@ -10,6 +10,10 @@ export async function getProducts() {
             title
             handle
             description
+            category {
+              name
+              
+            }
             images(first: 5) {
               edges {
                 node {

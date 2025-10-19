@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductByHandle } from "../api/getProductByHandle";
 import { createCheckout } from "../api/createCheckout";
+import GridLoader from "../components/SkeletonLoaders/GridLoader";
 
 export default function ProductDetail() {
   const { handle } = useParams();
@@ -13,7 +14,7 @@ export default function ProductDetail() {
     getProductByHandle(handle).then(setProduct).catch(err => console.error(err));
   }, [handle]);
 
-  if (!product) return <p className="p-6">Loading...</p>;
+  if (!product) return <GridLoader />;
 
   const mainImage = product.images?.edges?.[0]?.node?.url || "/placeholder.png";
   const variantId = product.variants?.edges?.[0]?.node?.id;

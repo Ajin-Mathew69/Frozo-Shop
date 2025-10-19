@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 export default function ProductCard({ product }) {
-  console.log(product);
+  // console.log(product);
 
   const image = product.images?.edges?.[0]?.node?.url || "/placeholder.png";
   const price = product.variants?.edges?.[0]?.node?.price?.amount || "0.00";

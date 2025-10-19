@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { createCheckout } from "../api/createCheckout";
+import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
+import { addToCart } from "../api/createCheckout";
 import { getProductByHandle } from "../api/getProductByHandle";
 import Container from "../components/Layouts/Container";
 import GridLoader from "../components/SkeletonLoaders/GridLoader";
@@ -10,6 +11,7 @@ export default function ProductDetail() {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProductByHandle(handle)
@@ -29,14 +31,18 @@ export default function ProductDetail() {
   const variantId = product.variants?.edges?.[0]?.node?.id;
   const price = product.variants?.edges?.[0]?.node?.price?.amount || "0.00";
   const isAvailable = product.variants?.edges?.[0]?.node?.availableForSale;
+  // console.log("Variant ID:", variantId);
 
-  const handleCheckout = async () => {
+  const handleAddToCart = async () => {
+    if (!isAvailable) return;
     try {
-      const checkout = await createCheckout(variantId, quantity);
-      window.location.href = checkout.webUrl;
+      addToCart(variantId, quantity);
+      toast.success("Added to cart! ");
+      // Optionally redirect to cart
+      setTimeout(() => navigate("/cart"), 1000);
     } catch (err) {
       console.error(err);
-      alert("Checkout failed. See console for details.");
+      toast.error("Failed to add to cart");
     }
   };
 
@@ -119,7 +125,7 @@ export default function ProductDetail() {
           {/* Add to Cart / Checkout */}
           <div className="flex gap-4">
             <button
-              onClick={handleCheckout}
+              onClick={handleAddToCart}
               disabled={!isAvailable}
               className={`flex-1 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition
     ${

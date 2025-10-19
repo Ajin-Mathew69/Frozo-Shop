@@ -31,15 +31,33 @@ export default function Home() {
       <HeroSection />
       <ShopByCategorySection bgColor="bg-gray-100" />
 
-      <Container className="mt-12 relative" bgColor="bg-white">
+      <Container className="relative" bgColor="bg-white">
         <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Featured Products</h2>
 
         <Swiper
-          slidesPerView={4}
+          slidesPerView={1}
           spaceBetween={30}
           pagination={{ clickable: true }}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
           modules={[Pagination, Autoplay]}
+          breakpoints={{
+            380: {
+              slidesPerView: 1,
+              slidesPerGroup: 1,
+            },
+            576: {
+              slidesPerView: 2,
+              slidesPerGroup: 2,
+            },
+            768: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+              slidesPerGroup: 4,
+            },
+          }}
           className="mySwiper"
         >
           {loading

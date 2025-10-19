@@ -1,7 +1,6 @@
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,16 +16,16 @@ export default function Navbar() {
 
           {/* Desktop Links */}
           <div className="hidden md:flex space-x-6">
-            <HashLink smooth to="#hero-section" className="hover:text-green-600">
+            <Link to="/" className="hover:text-green-600">
               Home
-            </HashLink>
+            </Link>
             <Link to="/products" className="hover:text-green-600">
               Products
             </Link>
-            <HashLink to="#about-section" className="hover:text-green-600">
+            <Link to="/" className="hover:text-green-600">
               About
-            </HashLink>
-            <Link to="#contact-section" className="hover:text-green-600">
+            </Link>
+            <Link to="/" className="hover:text-green-600">
               Contact
             </Link>
           </div>

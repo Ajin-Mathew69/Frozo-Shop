@@ -21,6 +21,8 @@ export async function getProductByHandle(handle) {
               price {
                 amount
               }
+                
+              availableForSale
             }
           }
         }

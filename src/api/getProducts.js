@@ -29,12 +29,13 @@ export async function getProducts() {
                     amount
                   }
                     unitPriceMeasurement {
-        measuredType
-        quantityUnit
-        quantityValue
-        referenceUnit
-        referenceValue
-      }
+                        measuredType
+                        quantityUnit
+                        quantityValue
+                        referenceUnit
+                        referenceValue
+                    }   
+        availableForSale
                 }
               }
             }
